@@ -1,0 +1,29 @@
+{
+  "name": "video-forge",
+  "version": "1.0.0",
+  "description": "Generate professional marketing videos from code. Designed as a Claude Code skill.",
+  "main": "src/index.js",
+  "bin": {
+    "vforge": "./bin/vforge.js"
+  },
+  "scripts": {
+    "start": "node bin/vforge.js",
+    "preview": "node bin/vforge.js preview",
+    "render": "node bin/vforge.js render",
+    "install-skill": "./install-skill.sh",
+    "postinstall": "echo '[video-forge] Run ./install-skill.sh to install the Claude Code skill'"
+  },
+  "keywords": ["video", "marketing", "claude-code", "puppeteer", "tts", "gemini", "animation"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/artiko-ai/video-forge"
+  },
+  "dependencies": {
+    "puppeteer": "^23.0.0",
+    "uuid": "^10.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT"
+}
