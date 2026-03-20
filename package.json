@@ -16,7 +16,7 @@
   "keywords": ["video", "marketing", "claude-code", "puppeteer", "tts", "gemini", "animation"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/artiko-ai/video-forge"
+    "url": "https://github.com/LorenzArtik/video-forge"
   },
   "dependencies": {
     "puppeteer": "^23.0.0",

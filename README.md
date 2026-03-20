@@ -21,7 +21,7 @@ Generate professional marketing videos entirely from code. Designed as a Claude 
 ### Install
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/video-forge.git
+git clone https://github.com/LorenzArtik/video-forge.git
 cd video-forge
 npm install
 npm link          # makes `vforge` available globally
