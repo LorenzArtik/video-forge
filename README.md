@@ -147,7 +147,12 @@ Copy your choice into the project:
 cp ~/path-to/video-forge/assets/music/corporate.mp3 my-video/assets/music.mp3
 ```
 
-When using the Claude Code skill, Claude will ask which track you prefer.
+Or use your own MP3 from any source (Pixabay, Mixkit, etc.):
+```bash
+cp /path/to/your-track.mp3 my-video/assets/music.mp3
+```
+
+When using the Claude Code skill, Claude will ask which option you prefer.
 
 ## TTS Voices
 
