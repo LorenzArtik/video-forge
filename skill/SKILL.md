@@ -55,6 +55,7 @@ Chiedi all'utente:
 - Durata desiderata (~30s breve, ~60s standard, ~90s dettagliato)
 - Formato: landscape (16:9 YouTube), portrait (9:16 social), o entrambi
 - Lingua della narrazione (default: italiano)
+- **GEMINI_API_KEY** — Chiedi all'utente la sua chiave API Google Gemini per la generazione audio TTS. Se non ce l'ha, indicagli di crearla gratuitamente su https://aistudio.google.com/apikey. Cerca anche nei file .env esistenti sul suo sistema (`find ~/Desktop -name ".env" -exec grep -l GEMINI {} 2>/dev/null`). La chiave va salvata nel `.env` del progetto.
 - Musica di sottofondo — offri le 3 tracce incluse:
   1. **corporate** — Digitale, tecnologico, professionale (ideale per SaaS, tech, B2B)
   2. **inspirational** — Pizzicato strings, emozionale, elegante (ideale per brand, storytelling)
