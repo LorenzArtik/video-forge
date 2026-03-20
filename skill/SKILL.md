@@ -566,31 +566,86 @@ vforge render --config project.vertical       # render 9:16
 
 ### Regole design verticale 9:16 (1080x1920) — CRITICHE
 
-> **ATTENZIONE:** Il frame 1080x1920 e ALTO e STRETTO. Gli elementi devono essere GRANDI per riempire lo spazio. Il problema piu comune e creare contenuti troppo piccoli con enormi spazi bianchi. Tutto deve scalare verso l'alto rispetto al landscape.
+> **IL FRAME E 1080x1920 PIXEL.** Il contenuto deve riempire TUTTO questo spazio. Il problema piu comune e creare contenuti con dimensioni da desktop (font 20px, icone 48px) che in un frame alto 1920px appaiono MINUSCOLI con enormi spazi bianchi. Pensa a come appare un Reel TikTok: testo GRANDE, elementi GRANDI, zero spazi vuoti.
 
-**Proporzioni obbligatorie per 9:16:**
-- **Headline**: 56-72px (NON 44px — troppo piccolo per 1920px di altezza!)
-- **Body text**: 22-28px (NON 16px)
-- **Card padding**: 36-40px (NON 24px)
-- **Card border-radius**: 24px (NON 16px)
-- **Icone container**: 60-80px (NON 48px)
-- **Icone SVG**: 30-40px (NON 24px)
-- **Badge**: font 20-22px, padding 12-14px
-- **CTA button**: font 24-28px, padding 20-24px 48-64px
-- **Stelle testimonial**: 28px (NON 18px)
-- **Padding scena**: 60-80px verticale, 48-60px laterale
-- **Gap tra cards**: 28-36px
+**Proporzioni MINIME obbligatorie per 9:16 (NON scendere sotto):**
+- **Headline**: 80-96px (NON sotto 72px!)
+- **Body text**: 26-32px (NON sotto 22px!)
+- **Card padding**: 40-48px
+- **Card border-radius**: 24-28px
+- **Icone container**: 80-96px
+- **Icone SVG inside**: 40-48px
+- **Badge/pill**: font 22-26px, padding 12-16px 24-28px
+- **CTA button**: font 28-32px, padding 24-28px 56-72px
+- **Stelle testimonial**: 28-32px
+- **Counter/statistiche**: 64-80px
+- **Padding scena**: 60-100px top/bottom, 48-60px laterale
+- **Gap tra cards**: 32-48px
+- **Nome autore testimonial**: 22-26px
 
-**Layout verticale:**
-- **TUTTO in colonna** — flex-direction: column, mai row
-- **Hero**: logo + headline centrati in alto (30% dello spazio), telefono mockup centrato grande (~520px wide, flex:1), CTA in basso
-- **Features**: cards impilate, layout interno orizzontale (icona sx 80px + testo dx)
-- **Testimonials**: cards impilate full-width, stelle grandi, testi 24px
-- **CTA**: card gradiente che riempie TUTTO il frame (inset padding 48px), headline 68px, bottone 28px
-- **Telefono mockup**: width 420px MAX in 9:16 (NON 520+, sembra un tablet!). Proporzioni reali iPhone = ~9:19.5 ratio. border-radius 52px. Il telefono deve sembrare un vero iPhone, stretto e alto.
+**Principio fondamentale: usa `justify-content:space-between`** sul contenitore principale per distribuire il contenuto su TUTTA l'altezza disponibile. Mai `justify-content:center` che ammassa tutto al centro con spazi vuoti sopra e sotto.
 
-**Sottotitoli**: position "center", fontSize 32
-**Narrazione**: stessa del landscape (audio condiviso)
+**Layout verticale — tutto in colonna:**
+- **Hero**: 3 blocchi verticali distribuiti con space-between:
+  - TOP (30%): logo + headline centrati, font 88px
+  - MIDDLE (flex:1): telefono mockup centrato, width 540px, `align-items:stretch`
+  - BOTTOM: CTA buttons, font 28px, padding generoso
+- **Features**: titolo 84px in alto, 3 cards impilate con layout interno orizzontale (icona 96px sx + testo dx), `justify-content:space-between`
+- **Testimonials**: titolo 80px in alto, 3 cards impilate full-width, stelle 32px, quote 30px, `justify-content:space-between`
+- **CTA**: gradiente full-bleed (NO card inset — riempi TUTTO il frame), headline 88px, bottone 32px
+- **Telefono mockup**: width 540px nel portrait (tra 420-600px), border-radius 52px. Proporzioni reali iPhone. Il contenitore del telefono deve usare `flex:1` per espandersi.
+
+**Template HTML portrait — Hero (copia e adatta):**
+```html
+<div style="display:flex;flex-direction:column;width:100%;height:100%;background:#fff;padding:80px 60px 60px;">
+  <!-- TOP: branding + headline -->
+  <div style="text-align:center;">
+    <div id="logo" style="...;opacity:0;"><!-- logo 64px --></div>
+    <h1 id="headline" style="font-size:88px;font-weight:700;line-height:0.95;letter-spacing:-3px;color:#111827;opacity:0;">
+      Titolo grande<br>su piu righe
+    </h1>
+    <p id="subtitle" style="font-size:28px;color:#6B7280;opacity:0;">Sottotitolo</p>
+  </div>
+  <!-- MIDDLE: visual (telefono, mockup, immagine) — si espande -->
+  <div id="visual" style="flex:1;display:flex;align-items:stretch;justify-content:center;padding:24px 0;opacity:0;">
+    <!-- contenuto visivo grande -->
+  </div>
+  <!-- BOTTOM: CTA -->
+  <div id="ctas" style="display:flex;gap:20px;justify-content:center;opacity:0;">
+    <div style="padding:24px 52px;font-size:28px;...">CTA Primario</div>
+  </div>
+</div>
+```
+
+**Template HTML portrait — Features:**
+```html
+<div style="display:flex;flex-direction:column;justify-content:space-between;width:100%;height:100%;background:#fff;padding:60px 56px;">
+  <h2 id="title" style="font-size:84px;text-align:center;opacity:0;">Titolo</h2>
+  <div style="display:flex;flex-direction:column;gap:32px;flex:1;justify-content:center;padding:40px 0;">
+    <!-- Card: layout orizzontale icona + testo -->
+    <div id="f1" style="display:flex;align-items:center;gap:32px;padding:48px 40px;border:2px solid #F3F4F6;border-radius:28px;opacity:0;">
+      <div style="width:96px;height:96px;border-radius:24px;..."><!-- icona 48px --></div>
+      <div>
+        <h3 style="font-size:36px;font-weight:700;">Titolo</h3>
+        <p style="font-size:26px;color:#6B7280;">Descrizione</p>
+      </div>
+    </div>
+    <!-- ripeti per f2, f3 -->
+  </div>
+</div>
+```
+
+**Template HTML portrait — CTA (full-bleed):**
+```html
+<div style="width:100%;height:100%;background:linear-gradient(...);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 60px;">
+  <div id="price" style="font-size:28px;opacity:0;">Prezzo</div>
+  <h2 id="headline" style="font-size:88px;color:#fff;opacity:0;">CTA grande</h2>
+  <p id="sub" style="font-size:32px;opacity:0;">Sottotitolo</p>
+  <div id="btn" style="font-size:32px;padding:28px 72px;opacity:0;">Bottone</div>
+</div>
+```
+
+**Sottotitoli portrait**: fontSize 32, position center
 
 ---
 
