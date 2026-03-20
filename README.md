@@ -132,6 +132,23 @@ vforge init --template social-reel my-video       # Vertical 9:16 reel
 vforge init --template testimonial my-video       # Quote card
 ```
 
+## Background Music
+
+Three royalty-free tracks are included in `assets/music/`:
+
+| Track | Style | Best for |
+|-------|-------|----------|
+| `corporate.mp3` | Digital, professional | SaaS, tech, B2B |
+| `inspirational.mp3` | Pizzicato strings, elegant | Brand, storytelling |
+| `ambient.mp3` | Atmospheric, minimal | Healthcare, wellness |
+
+Copy your choice into the project:
+```bash
+cp ~/path-to/video-forge/assets/music/corporate.mp3 my-video/assets/music.mp3
+```
+
+When using the Claude Code skill, Claude will ask which track you prefer.
+
 ## TTS Voices
 
 | Voice | Gender | Tone |

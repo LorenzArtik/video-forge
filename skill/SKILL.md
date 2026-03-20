@@ -55,6 +55,15 @@ Chiedi all'utente:
 - Durata desiderata (~30s breve, ~60s standard, ~90s dettagliato)
 - Formato: landscape (16:9 YouTube), portrait (9:16 social), o entrambi
 - Lingua della narrazione (default: italiano)
+- Musica di sottofondo — offri le 3 tracce incluse:
+  1. **corporate** — Digitale, tecnologico, professionale (ideale per SaaS, tech, B2B)
+  2. **inspirational** — Pizzicato strings, emozionale, elegante (ideale per brand, storytelling)
+  3. **ambient** — Atmosferico, rilassato, minimal (ideale per healthcare, wellness, servizi)
+
+La traccia scelta va copiata da `~/Desktop/video-forge/assets/music/` nel progetto:
+```bash
+cp ~/Desktop/video-forge/assets/music/<scelta>.mp3 <progetto>/assets/music.mp3
+```
 
 ### FASE 2: Analisi visiva del sito di riferimento
 
